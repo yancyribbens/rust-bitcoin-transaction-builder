@@ -6,6 +6,8 @@
 # -x (xtrace) enable execution tracing with expanded variables and arguments.
 set -ex
 
+FEATURES="arbitrary"
+
 # Sanity checks.
 cargo --version
 rustc --version
@@ -17,6 +19,13 @@ if [ "$DO_FEATURE_MATRIX" = true ]; then
     # No features.
     cargo build --no-default-features
     cargo test --no-default-features
+
+    # Single features.
+    for feature in ${FEATURES}
+    do
+        cargo build --no-default-features --features="$feature"
+        cargo test --no-default-features --features="$feature"
+    done
 fi
 
 if [ "$DO_LINT" = true ]
