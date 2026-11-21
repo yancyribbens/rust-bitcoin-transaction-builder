@@ -15,4 +15,4 @@ cp Cargo.msrv.toml Cargo.toml
 cp Cargo.msrv.lock Cargo.lock
 
 cargo build
-# arbtest not available for cargo test --all-features
+# arbtest not available for MSRV cargo test
